@@ -1,8 +1,10 @@
-# Creating an application with a Spring Boot code sample
+# OpenShift Test Application
 
-**Note:** The Spring Boot code sample uses the **8081** HTTP port.
 
-Before you begin creating an application with this `devfile` code sample, it's helpful to understand the relationship between the `devfile` and `Dockerfile` and how they contribute to your build. You can find these files at the following URLs:
+* The service will be accessible through the OpenShift sandbox:
+  * https://diamond-openshift-seepick42-dev.apps.rm3.7wse.p1.openshiftapps.com/
+
+## Package and Deployment Descriptors
 
 * [Spring Boot `devfile.yaml`](https://github.com/devfile-samples/devfile-sample-java-springboot-basic/blob/main/devfile.yaml)
 * [Spring Boot `Dockerfile`](https://github.com/devfile-samples/devfile-sample-java-springboot-basic/blob/main/docker/Dockerfile)
@@ -13,6 +15,7 @@ Before you begin creating an application with this `devfile` code sample, it's h
 4. The `devfile.yaml` [`deploy` command](https://github.com/devfile-samples/devfile-sample-java-springboot-basic/blob/main/devfile.yaml#L49-L56) completes the [outerloop](https://devfile.io/docs/2.2.0/innerloop-vs-outerloop) deployment phase by pointing to the `image-build` and `kubernetes-deploy` components to create your application.
 
 ### Additional resources
+
 * For more information about Spring Boot, see [Spring Boot](https://spring.io/projects/spring-boot).
 * For more information about devfiles, see [Devfile.io](https://devfile.io/).
 * For more information about the deployment outerloop, see [Devfile.io: Innerloop versus outerloop](https://devfile.io/docs/2.2.0/innerloop-vs-outerloop).
