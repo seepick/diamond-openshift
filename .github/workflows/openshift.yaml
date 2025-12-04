@@ -9,22 +9,24 @@ name: OpenShift check
 # Trigger workflow manually
 on:
   workflow_dispatch:
-    inputs:
-      openshiftServer:
-        type: string
-        description: OpenShift server URL, e.g. "https://api.rm3.7wse.p1.openshiftapps.com:6443"
-        required: true
-      openshiftNamespace:
-        type: string
-        description: OpenShift namespace, e.g. "diamond-openshift"
-        required: true
-      openshiftToken:
-        type: string
-        description: OpenShift token, e.g. "sha256~xxxxx"
-        required: true
+#    inputs:
+#      openshiftServer:
+#        type: string
+#        description: OpenShift server URL, e.g. "https://api.rm3.7wse.p1.openshiftapps.com:6443"
+#        required: true
+#      openshiftNamespace:
+#        type: string
+#        description: OpenShift namespace, e.g. "diamond-openshift"
+#        required: true
+#      openshiftToken:
+#        type: string
+#        description: OpenShift token, e.g. "sha256~xxxxx"
+#        required: true
 
 jobs:
   build:
+    # as defiend in GitHub
+    environment: sandbox
     name: Connect to OpenShift
     runs-on: ubuntu-latest
     steps:
@@ -55,10 +57,14 @@ jobs:
       - name: Log in to OpenShift
         uses: redhat-actions/oc-login@v1
         with:
-          openshift_server_url: ${{ github.event.inputs.openshiftServer }}
-          openshift_token: ${{ github.event.inputs.openshiftToken }}
+          openshift_server_url: https://api.rm3.7wse.p1.openshiftapps.com:6443
+#          openshift_server_url: ${{ github.event.inputs.openshiftServer }}
+          # as defined in github
+          openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
+#          openshift_token: ${{ github.event.inputs.openshiftToken }}
           insecure_skip_tls_verify: true
-          namespace: ${{ github.event.inputs.openshiftNamespace }}
+          namespace: diamond-openshift
+#          namespace: ${{ github.event.inputs.openshiftNamespace }}
       - name: Get POD
         run: |
            oc whoami
