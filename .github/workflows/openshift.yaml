@@ -61,7 +61,7 @@ jobs:
           namespace: ${{ github.event.inputs.openshiftNamespace }}
       - name: Get POD
         run: |
-           oc get pods
+           oc whoami
 #          oc get po -A | grep "<service-you are deploying>" | grep Running
 #          oc rollout latest <service-you are deploying>  -n pharmarun-dev
 #          sleep 10
